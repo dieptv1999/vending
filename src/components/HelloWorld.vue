@@ -59,15 +59,15 @@
           >
             <transition name="fadeOne">
               <CustomButton text="Book Data" class-name="w-full text-lg font-semibold text-white flex justify-center"
-                            :link="'/detail?url='+url1"/>
+                            :on-click="() => onClickModel(url1)" link="/"/>
             </transition>
             <transition name="fadeTwo">
               <CustomButton text="Game 1" class-name="w-full text-lg font-semibold text-white flex justify-center"
-                            :link="'/detail?url='+url2"/>
+                            :on-click="() => onClickModel(url2)" link="/"/>
             </transition>
             <transition name="fadeTwo">
               <CustomButton text="Game 2" class-name="w-full text-lg font-semibold text-white flex justify-center"
-                            :link="'/detail?url='+url3"/>
+                            :on-click="() => onClickModel(url3)" link="/"/>
             </transition>
             <div class="flex-1"></div>
             <div
@@ -95,7 +95,9 @@
 import 'vue3-carousel/dist/carousel.css'
 import {Carousel, Slide, Navigation,} from 'vue3-carousel'
 import {FaAngleLeft, FaAngleRight, UiCircleCloseO, TiThMenu} from "@kalimahapps/vue-icons";
-import CustomButton from './CustomButton';
+import CustomButton from './CustomButton.vue';
+import {useModal} from "vue-final-modal";
+import DetailModal from '../components/DetailModal.vue'
 
 export default {
   components: {
@@ -110,6 +112,22 @@ export default {
     UiCircleCloseO,
     TiThMenu,
   },
+  setup() {
+    const { open, patchOptions } = useModal({
+      component: DetailModal,
+      attrs: {
+        url: '',
+      },
+      slots: {
+        default: '<p>The content of the modal</p>',
+      },
+    })
+
+    return {
+      open,
+      patchOptions,
+    }
+  },
   name: 'HelloWorld',
   props: {},
   data: () => ({
@@ -119,8 +137,13 @@ export default {
     showMenu: false
   }),
   methods: {
-    getImage(imagePath) {
-      return require(imagePath);
+    onClickModel(url) {
+      this.patchOptions({
+        attrs: {
+          url,
+        }
+      })
+      this.open();
     },
     changeShowMenu(val) {
       this.showMenu = val;

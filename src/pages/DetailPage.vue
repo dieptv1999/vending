@@ -1,5 +1,5 @@
 <template>
-  <div v-if="src != null" class="relative z-10">
+  <div v-if="src != null" class="relative z-10 w-full h-full">
 <!--    <vue-iframe-->
 <!--        src="https://pemetaanbudaya.jkkn.gov.my/"-->
 <!--        allow="camera *; geolocation *; microphone *; autoplay *"-->
@@ -11,6 +11,7 @@
 <!--    />-->
     <div
         id="iframe-wrapper"
+        class="h-full w-full"
     >
       <iframe
           v-if="loaded"
@@ -41,7 +42,6 @@
 </template>
 
 <script>
-import {useRoute} from "vue-router";
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css';
 
@@ -51,11 +51,6 @@ export default {
     Loading,
   },
   setup() {
-    const route = useRoute()
-
-    return {
-      src: route.query.url ?? ''
-    }
   },
   data: () => ({
     detailIframe: null,
@@ -66,6 +61,9 @@ export default {
       wrapperStyle: null,
     }
   }),
+  props: {
+    src: String,
+  },
   methods: {
     onLoad(frame) {
       this.detailIframe = frame.contentWindow
@@ -77,16 +75,12 @@ export default {
   },
   mounted() {
     this.iframe.style = {
-      position: 'absolute',
-      width: window.innerWidth,
-      height: window.innerHeight,
-      top: "0px",
-      left: "0px",
+      height: "100%",
+      width: "100%",
     }
     this.iframe.wrapperStyle = {
-      overflow: 'hidden',
-      height: "100vh",
-      width: "100vw",
+      height: "100%",
+      width: "100%",
     }
     this.loaded = true;
   }
