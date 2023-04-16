@@ -6,7 +6,7 @@
         <router-link to="/">
           <img :src="require('../assets/logo.png')" alt="logo" class="max-w-full w-full object-contain max-h-[74px] lg:max-w-[450px] lg:max-h-[94px]" v-motion-roll-top/>
         </router-link>
-        <div v-tooltip="'Open list website'" class="text-4xl cursor-pointer" @click="() => changeShowMenu(true)">
+        <div v-tooltip="'Open list website'" class="text-5xl cursor-pointer" @click="() => changeShowMenu(true)">
           <TiThMenu class="text-white"/>
         </div>
       </div>
@@ -41,7 +41,7 @@
         </carousel>
         <div
             v-if="showMenu"
-            class="absolute-center max-w-[450px] w-full z-10"
+            class="absolute-center max-w-[550px] w-full z-10"
         >
           <div
               v-motion
@@ -133,10 +133,13 @@ export default {
     TiThMenu,
   },
   setup() {
-    const { open, patchOptions } = useModal({
+    const { open, patchOptions, close } = useModal({
       component: DetailModal,
       attrs: {
         url: '',
+        onConfirm() {
+          close()
+        },
       },
       slots: {
         default: '<p>The content of the modal</p>',
@@ -146,6 +149,7 @@ export default {
     return {
       open,
       patchOptions,
+      close,
     }
   },
   name: 'HelloWorld',
@@ -158,9 +162,13 @@ export default {
   }),
   methods: {
     onClickModel(url) {
+      const closeC = () => this.close();
       this.patchOptions({
         attrs: {
           url,
+          onConfirm() {
+            closeC()
+          },
         }
       })
       this.open();
