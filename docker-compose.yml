@@ -3,7 +3,7 @@ version: '3.3'
 services:
   vending-app:
     build:
-      dockerfile: Dockerfile
+      dockerfile: ./Dockerfile
     deploy:
       restart_policy:
         condition: on-failure
