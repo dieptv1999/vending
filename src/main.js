@@ -1,10 +1,10 @@
 import Home from './pages/Home.vue'
-import DetailPage from './pages/DetailPage'
-import App from './App'
+import DetailPage from './pages/DetailPage.vue'
+import App from './App.vue'
 import './index.scss';
 import {createApp} from "vue";
 import {createRouter, createWebHistory} from "vue-router";
-import NotFound from "@/pages/NotFound";
+import NotFound from "@/pages/NotFound.vue";
 import { MotionPlugin } from '@vueuse/motion'
 import VueIframe from 'vue-iframes'
 import VTooltip from 'v-tooltip'
