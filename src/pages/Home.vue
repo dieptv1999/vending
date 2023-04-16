@@ -1,5 +1,5 @@
 <template>
-  <HelloWorld/>
+  <HelloWorld :vf-images="vfImages"/>
   <div
       class="nc-BgGlassmorphism absolute inset-x-0 top-0 min-h-0 pl-10 py-32 flex flex-col overflow-hidden z-0"
       data-nc-id="BgGlassmorphism"
@@ -16,7 +16,21 @@ export default {
   name: 'App',
   components: {
     HelloWorld
-  }
+  },
+  data: () => ({
+    vfImages: [
+      {
+        id: 1,
+        url: '../assets/slider1.jpg'
+      },
+      {
+        id: 2,
+        url: '../assets/slider2.jpg'
+      }, {
+        id: 3,
+        url: '../assets/slider1.jpg'
+      }],
+  })
 }
 </script>
 
