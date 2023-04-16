@@ -128,16 +128,16 @@ export default {
   },
   computed:{
     url1(){
-      return process.env.VUE_APP_URL_1
+      return "https://pemetaanbudaya.jkkn.gov.my/"
     },
     url2(){
-      return process.env.VUE_APP_URL_2
+      return "https://pemetaanbudaya.jkkn.gov.my/"
     },
     url3(){
-      return process.env.VUE_APP_URL_3
+      return "https://pemetaanbudaya.jkkn.gov.my/"
     },
     vfImages() {
-      return process.env.VUE_APP_LIST_URL_IMAGE?.split(",").map((img, idx) => ({id: idx, url: img}))
+      return "https://pemetaanbudaya.jkkn.gov.my/template/img/slider/slider1.jpg,https://pemetaanbudaya.jkkn.gov.my/template/img/slider/slider2.jpg,https://pemetaanbudaya.jkkn.gov.my/template/img/slider/slider3.jpg"?.split(",").map((img, idx) => ({id: idx, url: img}))
     }
   }
 }
