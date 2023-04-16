@@ -41,7 +41,7 @@
         </carousel>
         <div
             v-if="showMenu"
-            class="absolute-center w-[350px] z-10"
+            class="absolute-center max-w-[450px] w-full z-10"
         >
           <div
               v-motion
@@ -55,7 +55,7 @@
     }"
 
               class="bg-white bg-opacity-40 backdrop-filter backdrop-blur-lg shadow-lg px-8 py-8 flex items-center
-            flex-col space-y-6 h-full rounded-2xl"
+            flex-col space-y-4 h-full rounded-2xl"
           >
             <transition name="fadeOne">
               <CustomButton text="Book Data" class-name="w-full text-lg font-semibold text-white flex justify-center"
@@ -67,6 +67,26 @@
             </transition>
             <transition name="fadeTwo">
               <CustomButton text="Game 2" class-name="w-full text-lg font-semibold text-white flex justify-center"
+                            :on-click="() => onClickModel(url3)" link="/"/>
+            </transition>
+            <transition name="fadeTwo">
+              <CustomButton text="Web 1" class-name="w-full text-lg font-semibold text-white flex justify-center"
+                            :on-click="() => onClickModel(url3)" link="/"/>
+            </transition>
+            <transition name="fadeTwo">
+              <CustomButton text="Web 2" class-name="w-full text-lg font-semibold text-white flex justify-center"
+                            :on-click="() => onClickModel(url3)" link="/"/>
+            </transition>
+            <transition name="fadeTwo">
+              <CustomButton text="Ecatalog" class-name="w-full text-lg font-semibold text-white flex justify-center"
+                            :on-click="() => onClickModel(url3)" link="/"/>
+            </transition>
+            <transition name="fadeTwo">
+              <CustomButton text="National song" class-name="w-full text-lg font-semibold text-white flex justify-center"
+                            :on-click="() => onClickModel(url3)" link="/"/>
+            </transition>
+            <transition name="fadeTwo">
+              <CustomButton text="Online servey" class-name="w-full text-lg font-semibold text-white flex justify-center"
                             :on-click="() => onClickModel(url3)" link="/"/>
             </transition>
             <div class="flex-1"></div>
@@ -154,10 +174,10 @@ export default {
       return "https://pemetaanbudaya.jkkn.gov.my/"
     },
     url2(){
-      return "https://pemetaanbudaya.jkkn.gov.my/"
+      return ""
     },
     url3(){
-      return "https://pemetaanbudaya.jkkn.gov.my/"
+      return ""
     },
     vfImages() {
       return "https://pemetaanbudaya.jkkn.gov.my/template/img/slider/slider1.jpg,https://pemetaanbudaya.jkkn.gov.my/template/img/slider/slider2.jpg,https://pemetaanbudaya.jkkn.gov.my/template/img/slider/slider3.jpg"?.split(",").map((img, idx) => ({id: idx, url: img}))
