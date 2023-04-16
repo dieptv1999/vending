@@ -10,6 +10,7 @@ import VueIframe from 'vue-iframes'
 import VTooltip from 'v-tooltip'
 
 const routes = [
+  { path: '/home', component: Home },
   { path: '/', component: Home },
   { path: '/detail', component: DetailPage },
   {

@@ -4,7 +4,7 @@
      bg-transparent lg:bg-transparent lg:shadow-none">
       <div class="max-w-screen-xl w-full flex justify-between items-center">
         <router-link to="/">
-          <img :src="require('../assets/logo.png')" alt="logo" class="max-w-[450px] max-h-[94px]" v-motion-roll-top/>
+          <img :src="require('../assets/logo.png')" alt="logo" class="max-w-full w-full object-contain max-h-[74px] lg:max-w-[450px] lg:max-h-[94px]" v-motion-roll-top/>
         </router-link>
         <div v-tooltip="'Open list website'" class="text-4xl cursor-pointer" @click="() => changeShowMenu(true)">
           <TiThMenu class="text-white"/>
@@ -24,13 +24,14 @@
             <navigation>
               <template #next>
                 <div
-                    class="p-2 text-lg lg:text-3xl lg:p-4 rounded-full bg-[#fa5b0f] text-white lg:translate-x-[-24px] z-50">
+                    class="p-2 text-lg lg:text-3xl lg:p-4 rounded-full bg-black bg-opacity-20 hover:bg-opacity-100 hover:bg-[#fa5b0f] text-white lg:translate-x-[-44px] z-50 animate-opacity-animation"
+                >
                   <FaAngleRight/>
                 </div>
               </template>
               <template #prev>
                 <div
-                    class="p-2 text-lg lg:text-3xl lg:p-4 rounded-full bg-[#fa5b0f] text-white lg:translate-x-[24px] z-50">
+                    class="p-2 text-lg lg:text-3xl lg:p-4 rounded-full bg-black bg-opacity-20 hover:bg-opacity-100 hover:bg-[#fa5b0f] text-white lg:translate-x-[44px] z-50 animate-opacity-animation">
                   <FaAngleLeft/>
                 </div>
               </template>
@@ -50,7 +51,6 @@
     }"
               :enter="{
       opacity: 1,
-      opacity: 1,
       y: 0,
     }"
 
@@ -64,6 +64,10 @@
             <transition name="fadeTwo">
               <CustomButton text="Game 1" class-name="w-full text-lg font-semibold text-white flex justify-center"
                             :link="'/detail?url='+url2"/>
+            </transition>
+            <transition name="fadeTwo">
+              <CustomButton text="Game 2" class-name="w-full text-lg font-semibold text-white flex justify-center"
+                            :link="'/detail?url='+url3"/>
             </transition>
             <div class="flex-1"></div>
             <div
@@ -134,6 +138,9 @@ export default {
     },
     url2(){
       return process.env.VUE_APP_URL_2
+    },
+    url3(){
+      return process.env.VUE_APP_URL_3
     },
     vfImages() {
       return process.env.VUE_APP_LIST_URL_IMAGE.split(",").map((img, idx) => ({id: idx, url: img}))
