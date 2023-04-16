@@ -58,35 +58,35 @@
             flex-col space-y-4 h-full rounded-2xl"
           >
             <transition name="fadeOne">
-              <CustomButton text="Book Data" class-name="w-full text-lg font-semibold text-white flex justify-center"
+              <CustomButton text="Book Data" class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
                             :on-click="() => onClickModel(url1)" link="/"/>
             </transition>
             <transition name="fadeTwo">
-              <CustomButton text="Game 1" class-name="w-full text-lg font-semibold text-white flex justify-center"
+              <CustomButton text="Game 1" class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
                             :on-click="() => onClickModel(url2)" link="/"/>
             </transition>
             <transition name="fadeTwo">
-              <CustomButton text="Game 2" class-name="w-full text-lg font-semibold text-white flex justify-center"
+              <CustomButton text="Game 2" class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
                             :on-click="() => onClickModel(url3)" link="/"/>
             </transition>
             <transition name="fadeTwo">
-              <CustomButton text="Web 1" class-name="w-full text-lg font-semibold text-white flex justify-center"
+              <CustomButton text="Web 1" class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
                             :on-click="() => onClickModel(url3)" link="/"/>
             </transition>
             <transition name="fadeTwo">
-              <CustomButton text="Web 2" class-name="w-full text-lg font-semibold text-white flex justify-center"
+              <CustomButton text="Web 2" class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
                             :on-click="() => onClickModel(url3)" link="/"/>
             </transition>
             <transition name="fadeTwo">
-              <CustomButton text="Ecatalog" class-name="w-full text-lg font-semibold text-white flex justify-center"
+              <CustomButton text="Ecatalog" class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
                             :on-click="() => onClickModel(url3)" link="/"/>
             </transition>
             <transition name="fadeTwo">
-              <CustomButton text="National song" class-name="w-full text-lg font-semibold text-white flex justify-center"
+              <CustomButton text="National song" class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
                             :on-click="() => onClickModel(url3)" link="/"/>
             </transition>
             <transition name="fadeTwo">
-              <CustomButton text="Online servey" class-name="w-full text-lg font-semibold text-white flex justify-center"
+              <CustomButton text="Online servey" class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
                             :on-click="() => onClickModel(url3)" link="/"/>
             </transition>
             <div class="flex-1"></div>
@@ -188,7 +188,7 @@ export default {
       return ""
     },
     vfImages() {
-      return "https://pemetaanbudaya.jkkn.gov.my/template/img/slider/slider1.jpg,https://pemetaanbudaya.jkkn.gov.my/template/img/slider/slider2.jpg,https://pemetaanbudaya.jkkn.gov.my/template/img/slider/slider3.jpg"?.split(",").map((img, idx) => ({id: idx, url: img}))
+      return process.env.VUE_APP_LIST_URL_IMAGE?.split(",").map((img, idx) => ({id: idx, url: img}))
     }
   }
 }
