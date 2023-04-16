@@ -7,7 +7,6 @@ import {createRouter, createWebHistory} from "vue-router";
 import NotFound from "@/pages/NotFound.vue";
 import { MotionPlugin } from '@vueuse/motion'
 import VueIframe from 'vue-iframes'
-import VTooltip from 'v-tooltip'
 
 const routes = [
   { path: '/home', component: Home },
@@ -32,5 +31,4 @@ const app = createApp(App)
 app.use(router)
 app.use(MotionPlugin)
 app.use(VueIframe)
-app.use(VTooltip)
 app.mount('#app')
