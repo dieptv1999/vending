@@ -4,7 +4,6 @@ services:
   vending-app:
     build:
       dockerfile: Dockerfile
-    pull_policy: always
     deploy:
       restart_policy:
         condition: on-failure
