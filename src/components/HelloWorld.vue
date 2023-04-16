@@ -13,7 +13,7 @@
     </div>
     <div class="flex justify-center items-center h-[100vh] z-10 relative landing">
       <div class="w-full relative">
-        <carousel :items-to-show="1" :autoplay="2000" :wrap-around="true">
+        <carousel :items-to-show="1" :autoplay="4000" :wrap-around="true">
           <slide v-for="slide in vfImages" :key="slide.id" class="">
             <div class="carousel__item overflow-hidden shadow-3xl h-[100vh] w-full">
               <img :src="slide.url" alt="" class="h-full w-full object-cover"/>
