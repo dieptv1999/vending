@@ -4,7 +4,9 @@
      bg-transparent lg:bg-transparent lg:shadow-none">
       <div class="max-w-screen-xl w-full flex justify-between items-center">
         <router-link to="/">
-          <img :src="require('../assets/logo.png')" alt="logo" class="max-w-full w-full object-contain max-h-[74px] lg:max-w-[450px] lg:max-h-[94px]" v-motion-roll-top/>
+          <img :src="require('../assets/logo.png')" alt="logo"
+               class="max-w-full w-full object-contain max-h-[74px] lg:max-w-[450px] lg:max-h-[94px]"
+               v-motion-roll-top/>
         </router-link>
         <div v-tooltip="'Open list website'" class="text-5xl cursor-pointer" @click="() => changeShowMenu(true)">
           <TiThMenu class="text-white"/>
@@ -58,36 +60,44 @@
             flex-col space-y-4 h-full rounded-2xl"
           >
             <transition name="fadeOne">
-              <CustomButton text="Book Data" class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
-                            :on-click="() => onClickModel(url1)" link="/"/>
-            </transition>
-            <transition name="fadeTwo">
-              <CustomButton text="Game 1" class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
-                            :on-click="() => onClickModel(url2)" link="/"/>
-            </transition>
-            <transition name="fadeTwo">
-              <CustomButton text="Game 2" class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
+              <CustomButton text="Book Data"
+                            class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
                             :on-click="() => onClickModel(url3)" link="/"/>
             </transition>
             <transition name="fadeTwo">
-              <CustomButton text="Web 1" class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
+              <CustomButton text="Game 1"
+                            class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
                             :on-click="() => onClickModel(url3)" link="/"/>
             </transition>
             <transition name="fadeTwo">
-              <CustomButton text="Web 2" class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
+              <CustomButton text="Game 2"
+                            class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
                             :on-click="() => onClickModel(url3)" link="/"/>
             </transition>
             <transition name="fadeTwo">
-              <CustomButton text="Ecatalog" class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
+              <CustomButton text="Web 1"
+                            class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
+                            :on-click="() => onClickModel(web1)" link="/"/>
+            </transition>
+            <transition name="fadeTwo">
+              <CustomButton text="Web 2"
+                            class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
+                            :on-click="() => onClickModel(web2)" link="/"/>
+            </transition>
+            <transition name="fadeTwo">
+              <CustomButton text="Ecatalog"
+                            class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
                             :on-click="() => onClickModel(url3)" link="/"/>
             </transition>
             <transition name="fadeTwo">
-              <CustomButton text="National song" class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
+              <CustomButton text="National song"
+                            class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
                             :on-click="() => onClickModel(url3)" link="/"/>
             </transition>
             <transition name="fadeTwo">
-              <CustomButton text="Online servey" class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
-                            :on-click="() => onClickModel(url3)" link="/"/>
+              <CustomButton text="Online servey"
+                            class-name="w-full text-lg font-semibold text-white flex justify-center hover:scale-105"
+                            :on-click="() => changeShowSurvey(true)" link="/"/>
             </transition>
             <div class="flex-1"></div>
             <div
@@ -98,14 +108,12 @@
             </div>
           </div>
         </div>
-        <!--      <div v-else-if="!showMenu" class="absolute-center max-w-[650px] w-full flex items-center justify-center">-->
-        <!--        <DecodeText-->
-        <!--            title="KEBUDAYAN"-->
-        <!--            description="Seni Persembahan, Makanan Tradisional, Adat Resam Dan Lain-lain"-->
-        <!--            text-button="Maklumat Lanjut"-->
-        <!--            :on-click="() => changeShowMenu(true)"-->
-        <!--        />-->
-        <!--      </div>-->
+        <div
+            v-if="showSurvey"
+            class="absolute-center max-w-[550px] w-full z-10"
+        >
+          <SurveyForm :changeShowSurvey="changeShowSurvey"/>
+        </div>
       </div>
     </div>
   </div>
@@ -118,9 +126,11 @@ import {FaAngleLeft, FaAngleRight, UiCircleCloseO, TiThMenu} from "@kalimahapps/
 import CustomButton from './CustomButton.vue';
 import {useModal} from "vue-final-modal";
 import DetailModal from '../components/DetailModal.vue'
+import SurveyForm from "@/components/SurveyForm";
 
 export default {
   components: {
+    SurveyForm,
     // DecodeText,
     Carousel,
     Slide,
@@ -133,7 +143,7 @@ export default {
     TiThMenu,
   },
   setup() {
-    const { open, patchOptions, close } = useModal({
+    const {open, patchOptions, close} = useModal({
       component: DetailModal,
       attrs: {
         url: '',
@@ -158,7 +168,8 @@ export default {
     vfOptions: {
       autoplay: true
     },
-    showMenu: false
+    showMenu: false,
+    showSurvey: false,
   }),
   methods: {
     onClickModel(url) {
@@ -175,16 +186,20 @@ export default {
     },
     changeShowMenu(val) {
       this.showMenu = val;
+    },
+    changeShowSurvey(val) {
+      this.showMenu = false;
+      this.showSurvey = val;
     }
   },
-  computed:{
-    url1(){
-      return "https://pemetaanbudaya.jkkn.gov.my/"
+  computed: {
+    web1() {
+      return process.env.VUE_APP_URL_WEB_1
     },
-    url2(){
-      return ""
+    web2() {
+      return process.env.VUE_APP_URL_WEB_2
     },
-    url3(){
+    url3() {
       return ""
     },
     vfImages() {
