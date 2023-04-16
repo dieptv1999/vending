@@ -1,10 +1,10 @@
-version: '3.7'
+version: '3.3'
 
 services:
   vending-app:
     build:
-      dockerfile: Dockerfile
-    pull_policy: always
+      context: .
+      dockerfile: Dockerfile-old-version
     deploy:
       restart_policy:
         condition: on-failure
